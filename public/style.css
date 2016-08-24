@@ -1,0 +1,28 @@
+body{
+    /*width: 100%;*/
+    background-color: blue;
+}
+.messages{
+    background-color: lightgray;
+    border-bottom: 1px solid black;
+}
+#app{
+    background-color: white;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#message-form{
+    /*border: 1px solid black;*/
+    /*border-radius: 5px;*/
+}
+#text{
+    width: 90%;
+    margin: 5px auto;
+    display: block;
+}
+#submit{
+    display: block;
+    margin: 5px auto;
+}
