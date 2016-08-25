@@ -23,10 +23,10 @@ socket.on('connect', function(){
 socket.on('message', function(message){
     console.log(message.time + ' New message: ' + message.text);
     var nameAndTime =  '<strong>' + message.name + " - " + message.time + '</strong>';
-    var newMessage = '<p>' + nameAndTime + ": " + message.text + '</p>';
+    var newMessages = '<li class=" list-group-item">' + nameAndTime + ": " + message.text + '</li>';
     // $('#chat').append('You are in room: ' + room);
     // console.log(room);
-    $('.messages').append(newMessage);
+    $('.messages').append(newMessages);
 });
 
 // Code for submitting new messages
