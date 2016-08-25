@@ -8,10 +8,15 @@ body{
 }
 #app{
     background-color: white;
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     border: 1px solid black;
     border-radius: 5px;
+}
+a{
+    text-align: center;
+    text-decoration: none;
+    display: block;
 }
 #message-form{
     /*border: 1px solid black;*/
