@@ -4,3 +4,12 @@
     display: flex;
     align-items: center;
 }
+h1, h3{
+    margin:24px 0;
+}
+.chat-top{
+    margin-top: 20%;
+}
+.message p{
+    margin: 6px 0;
+}
