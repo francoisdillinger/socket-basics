@@ -8,7 +8,11 @@ h1, h3{
     margin:24px 0;
 }
 .chat-top{
-    margin-top: 20%;
+    margin-top: 40px;
+}
+.scrollable-content{
+    height: 20em;
+    overflow: auto;
 }
 .message p{
     margin: 6px 0;
