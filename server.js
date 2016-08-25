@@ -7,6 +7,30 @@ var moment = require('moment');
 var now = moment();
 var clientInfo = {};
 
+// Send current users to socket
+function sendCurrentUsers(socket){
+    var timeStamp = Date.now();
+    var timestampMoment = moment.utc(timeStamp);
+    var currentTime = timestampMoment.local().format("h:mm a");
+    var info = clientInfo[socket.id];
+    var users = [];
+
+    if(typeof info === 'undefined'){
+        return;
+    }
+    Object.keys(clientInfo).forEach(function(socketId){
+        var userInfo = clientInfo[socketId];
+
+        if(info.room === userInfo.room){
+            users.push(userInfo.name);
+        }
+    });
+    socket.emit('message', {
+        name: 'Skynet',
+        text: 'Current users: ' + users.join(', '),
+        time: currentTime
+    });
+}
 
 app.use(express.static(__dirname + '/public'));
 
@@ -42,11 +66,13 @@ io.on('connection', function(socket){
     });
 
     socket.on('message', function(message){
-        // console.log('hi');
         console.log( message.time + ' Message recieved: ' + message.text);
 
-        // message.time = moment().valueOf();
-        io.to(clientInfo[socket.id].room).emit('message', message);
+        if(message.text === '@currentUsers'){
+            sendCurrentUsers(socket);
+        }else{
+            io.to(clientInfo[socket.id].room).emit('message', message);
+        }
     });
 
     socket.emit('message', {
