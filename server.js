@@ -25,6 +25,7 @@ io.on('connection', function(socket){
     });
 
     socket.emit('message', {
+        name: 'Skynet',
         text: 'Welcome to the app bruh!',
         time: currentTime
     });
