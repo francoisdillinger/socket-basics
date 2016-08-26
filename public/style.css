@@ -12,8 +12,13 @@ h1, h3{
 }
 .scrollable-content{
     height: 20em;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+.message{
+    /*opacity: 0;*/
 }
 .message p{
     margin: 6px 0;
+    /*opacity: 0;*/
 }

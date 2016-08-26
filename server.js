@@ -7,11 +7,18 @@ var moment = require('moment');
 var now = moment();
 var clientInfo = {};
 
-// Send current users to socket
-function sendCurrentUsers(socket){
+function getTime() {
     var timeStamp = Date.now();
     var timestampMoment = moment.utc(timeStamp);
     var currentTime = timestampMoment.local().format("h:mm a");
+    return currentTime;
+}
+
+// Send current users to socket
+function sendCurrentUsers(socket){
+    // var timeStamp = Date.now();
+    // var timestampMoment = moment.utc(timeStamp);
+    // var currentTime = timestampMoment.local().format("h:mm a");
     var info = clientInfo[socket.id];
     var users = [];
 
@@ -28,18 +35,18 @@ function sendCurrentUsers(socket){
     socket.emit('message', {
         name: 'Skynet',
         text: 'Current users: ' + users.join(', '),
-        time: currentTime
+        time: getTime()
     });
 }
 
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket){
-    var timeStamp = Date.now();
-    var timestampMoment = moment.utc(timeStamp);
-    var currentTime = timestampMoment.local().format("h:mm a");
+    // var timeStamp = Date.now();
+    // var timestampMoment = moment.utc(timeStamp);
+    // var currentTime = timestampMoment.local().format("h:mm a");
 
-    console.log('User connected via socket.io at: ' + currentTime);
+    console.log('User connected via socket.io at: ' + getTime());
 
     socket.on('disconnect', function(){
         var userData = clientInfo[socket.id];
@@ -49,7 +56,7 @@ io.on('connection', function(socket){
             io.to(userData.room).emit('message', {
                 name: 'Skynet',
                 text: userData.name + ' has left the room!',
-                time: currentTime
+                time: getTime()
             });
             delete clientInfo[socket.id];
         }
@@ -61,7 +68,7 @@ io.on('connection', function(socket){
         socket.broadcast.to(req.room).emit('message', {
             name: 'Skynet',
             text: req.name + ' has joined!',
-            time: currentTime
+            time: getTime()
         });
     });
 
@@ -78,7 +85,7 @@ io.on('connection', function(socket){
     socket.emit('message', {
         name: 'Skynet',
         text: 'Welcome to the app bruh!',
-        time: currentTime
+        time: getTime()
     });
 });
 
