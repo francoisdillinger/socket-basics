@@ -16,9 +16,10 @@ h1, h3{
     overflow-wrap: break-word;
 }
 .message{
-    /*opacity: 0;*/
+    border-radius: 25px;
+    margin: 5px 0;
+    box-shadow: -1px 2px 0px #D4D4D4;
 }
 .message p{
     margin: 6px 0;
-    /*opacity: 0;*/
 }
