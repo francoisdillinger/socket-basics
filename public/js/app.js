@@ -52,19 +52,11 @@ socket.on('message', function(message){
 var $form = $('#message-form');
 
 $form.on('submit', function(e){
-    // var timeStamp = Date.now();
-    // var timestampMoment = moment.utc(timeStamp);
-    // var currentTime = timestampMoment.local().format("h:mm a");
     var $message = $form.find('input[name=message]')
     e.preventDefault();
 
-    // console.log($('.messages').height());
-    // count = $('.messages').height();
-    // $('.scrollable-content').animate({ scrollTop: count });
-
     socket.emit('message', {
         name: name,
-        // room: room,
         text: $message.val(),
         time: getTime()
     });
