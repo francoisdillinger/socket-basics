@@ -41,8 +41,7 @@ socket.on('message', function(message){
     console.log(message.time + ' New message: ' + message.text);
     var nameAndTime =  '<strong>' + message.name + " - " + message.time + '</strong>';
     var newMessages = '<li class="message list-group-item"><p>' + nameAndTime + ": " + message.text + '</p></li>';
-    // $('#chat').append('You are in room: ' + room);
-    // console.log(room);
+
     $('.messages').append(newMessages);
     
 });
