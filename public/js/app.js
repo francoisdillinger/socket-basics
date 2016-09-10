@@ -32,13 +32,7 @@ socket.on('message', function(message){
 
     count = $('.messages').height();
     $('.scrollable-content').animate({ scrollTop: count });
-    // count++;
-    // $('.scrollable-content').scrollTop(400);
-    // var top = $('.scrollable-content').scrollTop(10);
-    // $('.scrollable-content').animate({
-    //     left: "+=100"
-    // }, 1000, function(){});
-    console.log(message.time + ' New message: ' + message.text);
+    // console.log(message.time + ' New message: ' + message.text);
     var nameAndTime =  '<strong>' + message.name + " - " + message.time + '</strong>';
     var newMessages = '<li class="message list-group-item"><p>' + nameAndTime + ": " + message.text + '</p></li>';
 
