@@ -15,9 +15,6 @@ console.log(name + ' has joined the room ' + room + '!');
 $('#chat').text('You are in room: ' + room);
 
 socket.on('connect', function(){
-    // var timeStamp = Date.now();
-    // var timestampMoment = moment.utc(timeStamp);
-    // var currentTime = timestampMoment.local().format("h:mm a");
     console.log('Connected to socket.io server at: ' + getTime());
     socket.emit('joinRoom', {
         name: name,
