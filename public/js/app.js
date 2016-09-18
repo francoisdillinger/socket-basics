@@ -20,9 +20,6 @@ socket.on('connect', function(){
         name: name,
         room: room 
     });
-    // $('#chat').append('You are in room: ' + room);
-    // message.room = room;
-    // console.log(name + ' has joined the room ' + room + '!');
 });
 
 socket.on('message', function(message){
